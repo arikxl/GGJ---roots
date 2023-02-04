@@ -1,92 +1,56 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-// import { handleKeyDown } from '../service/heroMove';
+import { handleKeyDown } from '../service/heroMove';
 
+import { robbyImgs } from '../data/data';
 
-const RobbyStyled = styled.section`
-    background: url('https://res.cloudinary.com/arikxl/image/upload/v1675504119/Ella2023/a5s77ta2ktxjkubhtoex.png');
-    width: 200px;
-    height: 300px;
+const RobbyStyled = styled.img`
+    /* background-image: url('/images/robby/robby00.png'); */
+    /* background: url('../images/robby/robby00.png'); */
+    width: 10%;
+    aspect-ratio:1/1;
     position: absolute;
     top: ${props => props.position.y}%;
     left: ${props => props.position.x}%;
     background-position: cover;
     background-repeat: no-repeat;
     background-size: contain;
-    /* left:${props => props.direction === 'left' ? `${props.left+ '%'}` : '50%'}; */
     transform: translate(-50%, 0);
     `;
 
 const RobbyCarrot = () => {
 
-    const [direction, setDirection] = useState(null);
     const [position, setPosition] = useState({ x: 50, y: 50 });
-    const [left, setLeft] = useState(50);
+    const [frame, setFrame] = useState(0);
 
+    
+    // MOVE
     useEffect(() => {
-        console.log('TEST!!!');
-        const handleKeyDown = (event) => {
-            switch (event.key) {
-                case "ArrowUp":
-                    setDirection("up");
-                    break;
-                case "ArrowDown":
-                    setDirection("down");
-                    break;
-                case "ArrowLeft":
-                    setDirection("left");
-                    break;
-                case "ArrowRight":
-                    setDirection("right");
-                    break;
-                default:
-                    break;
-            }
-        };
-        document.addEventListener("keydown", handleKeyDown);
+
+        document.addEventListener("keydown", (e) => handleKeyDown(e, setPosition));
         return () => {
-            document.removeEventListener("keydown", handleKeyDown);
+            document.removeEventListener("keydown", (e) => handleKeyDown(e, setPosition));
         };
     }, [])
 
+    // ANIMATE
     useEffect(() => {
-        const moveHero = () => {
-            switch (direction) {
-                case "up":
-                    setPosition((prevPosition) => ({
-                        x: prevPosition.x,
-                        y: prevPosition.y - 1,
-                    }));
-                    break;
-                case "down":
-                    setPosition((prevPosition) => ({
-                        x: prevPosition.x,
-                        y: prevPosition.y + 1,
-                    }));
-                    break;
-                case "left":
-                    setPosition((prevPosition) => ({
-                        x: prevPosition.x - 1,
-                        y: prevPosition.y,
-                    }));
-                    break;
-                case "right":
-                    setPosition((prevPosition) => ({
-                        x: prevPosition.x + 1,
-                        y: prevPosition.y,
-                    }));
-                    break;
-                default:
-                    break;
-            }
-        };
-        const intervalId = setInterval(moveHero, 100);
+        let intervalId = null;
+        if (position.x !== 50 || position.y !== 50) {
+            intervalId = setInterval(() => {
+                setFrame((prevFrame) => (prevFrame + 1) % 20);
+            }, 100);
+        } else {
+            clearInterval(intervalId);
+        }
         return () => clearInterval(intervalId);
-    }, [direction]);
-
+    }, [position]);
+    
     return (
-        <RobbyStyled direction={direction} position={position}>
-        </RobbyStyled>
+        <RobbyStyled position={position}
+    //    alt="Robby the Carrot" src='/images/robby/robby00.png'/>
+            alt="Robby the Carrot" src={robbyImgs[frame]}/>
+        // </RobbyStyled>
 
     )
 }

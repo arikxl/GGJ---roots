@@ -25,6 +25,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     *{
+        overflow-y : hidden;
+        overflow-x : hidden;
         box-sizing: border-box;
         list-style: none;
         margin: 0;

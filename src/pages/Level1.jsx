@@ -7,6 +7,8 @@ const Level1Styled = styled.main`
     background: url('https://res.cloudinary.com/arikxl/image/upload/v1675503624/Ella2023/skbhmuftuotkaisqv4rb.png');
     height:100vh;
     position: relative;
+    background-repeat: no-repeat;
+    background-size:cover;
 `;
 
 const Level1 = () => {
