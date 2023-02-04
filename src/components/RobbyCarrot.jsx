@@ -48,10 +48,7 @@ const RobbyCarrot = () => {
     
     return (
         <RobbyStyled position={position}
-    //    alt="Robby the Carrot" src='/images/robby/robby00.png'/>
             alt="Robby the Carrot" src={robbyImgs[frame]}/>
-        // </RobbyStyled>
-
     )
 }
 
