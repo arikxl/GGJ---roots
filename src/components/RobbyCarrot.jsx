@@ -20,7 +20,7 @@ const RobbyStyled = styled.img`
 
 const RobbyCarrot = () => {
 
-    const [position, setPosition] = useState({ x: 50, y: 50 });
+    const [position, setPosition] = useState({ x: 50, y: 70 });
     const [frame, setFrame] = useState(0);
 
     

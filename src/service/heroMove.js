@@ -1,22 +1,22 @@
 export const handleKeyDown = (event, setPosition) => {
     switch (event.key) {
-        case "ArrowUp":
+        // case "ArrowUp":
                     
-            setPosition((prevPosition) => ({
-                x: prevPosition.x,
-                y: prevPosition.y - 0.5 < 0
-                    ? 0
-                    : prevPosition.y - 0.5,
-            }));
-            break;
-        case "ArrowDown":
-            setPosition((prevPosition) => ({
-                x: prevPosition.x,
-                y: prevPosition.y + 0.5 > 84
-                ? 84
-                : prevPosition.y + 0.5,
-            }));
-            break;
+        //     setPosition((prevPosition) => ({
+        //         x: prevPosition.x,
+        //         y: prevPosition.y - 0.5 < 0
+        //             ? 0
+        //             : prevPosition.y - 0.5,
+        //     }));
+        //     break;
+        // case "ArrowDown":
+        //     setPosition((prevPosition) => ({
+        //         x: prevPosition.x,
+        //         y: prevPosition.y + 0.5 > 84
+        //         ? 84
+        //         : prevPosition.y + 0.5,
+        //     }));
+        //     break;
         case "ArrowLeft":
             setPosition((prevPosition) => ({
                 x: prevPosition.x - 8 < 0

@@ -36,7 +36,6 @@ const GlobalStyle = createGlobalStyle`
 
     html, textarea {
         /* color: var(--blue1); */
-        direction: rtl;
         font-family: 'Varela Round', sans-serif;
         line-height: 1.6;
     }

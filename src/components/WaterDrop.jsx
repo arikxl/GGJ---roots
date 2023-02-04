@@ -57,11 +57,10 @@ const WaterDrop = () => {
     useEffect(() => {
 
 
-                if (position.y < -20) {
-                    setRandomNumber(Math.floor(Math.random() * 100) + 1);
+        if (position.y < -90    ) {
                     
-                    setPosition({ x: randomNumber, y:position.y});
-                    // console.log('randomNumber:', randomNumber)
+                    setRandomNumber(Math.floor(Math.random() * 100) + 1);
+
                 } else return
 
 
