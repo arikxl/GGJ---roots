@@ -47,7 +47,9 @@ const Level1 = ({ score, setScore, life, setLife }) => {
                 <Life life={life} />
             </div>
             <WaterDrop />
-            <Leaf1 />
+            <Leaf1 num={ 1}/>
+            <Leaf1 num={2}/>
+            <Leaf1 num={3}/>
             <RobbyCarrot />
             <img src="https://res.cloudinary.com/arikxl/image/upload/v1675514379/Ella2023/rqyoehi1fiybiba3nn5v.png"
                 alt="" className='overlay' />

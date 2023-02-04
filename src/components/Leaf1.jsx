@@ -33,7 +33,8 @@ const WaterDropStyled = styled.img`
 
 `;
 
-const Leaf1 = () => {
+const Leaf1 = ({num}) => {
+
 
 
   const [position, setPosition] = useState({ x: 50, y: -100 });
@@ -41,17 +42,17 @@ const Leaf1 = () => {
 
   // MOVE DOWN
   useEffect(() => {
-    const speed = 4
+    const speed = num <3 ? 4 : 2
     const interval = setInterval(() => {
 
       setPosition({ x: position.x, y: position.y + speed });
-    }, 5);
+    }, num > 1 ? 4 : 2);
     if (position.y > window.innerHeight) {
-      setPosition({ x: position.x, y: -110 });
+      setPosition({ x: position.x, y: num > 1 ? -90 :  -110 });
     }
     return () => clearInterval(interval);
 
-  }, [position])
+  }, [num, position])
 
   // MOVE RANDOME  X
   useEffect(() => {
@@ -67,9 +68,20 @@ const Leaf1 = () => {
 
   }, [position.y, randomNumber])
 
+  let imgSrc;
+
+  if (num === 1) {
+    imgSrc ='https://res.cloudinary.com/arikxl/image/upload/v1675531127/Ella2023/zeaexpotvdkor3m3gtqt.png'
+  } else if (num === 2) {
+    imgSrc = 'https://res.cloudinary.com/arikxl/image/upload/v1675532343/Ella2023/li9nesu3twstb7ufdvqc.png'
+  } else if (num === 3) {
+    imgSrc = 'https://res.cloudinary.com/arikxl/image/upload/v1675532374/Ella2023/fnpuvtemxtoshe2rfnux.png'
+
+  }
+
   return (
     <WaterDropStyled
-      src="https://res.cloudinary.com/arikxl/image/upload/v1675531127/Ella2023/zeaexpotvdkor3m3gtqt.png" alt="leaf"
+      src={imgSrc} alt="leaf"
       position={position}
       randomNumber={randomNumber}
     />
